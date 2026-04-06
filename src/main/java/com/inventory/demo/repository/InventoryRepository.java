@@ -11,6 +11,6 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     // Find inventory by product
     List<Inventory> findByProduct(Product product);
 
-    // 🔥 Used for low stock alerts later
+    //  Used for low stock alerts later
     List<Inventory> findByQuantityLessThan(Integer threshold);
 }

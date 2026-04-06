@@ -23,12 +23,12 @@ public class ProductService {
     public Long createProduct(String name, String sku, BigDecimal price,
                               Long warehouseId, Integer initialQuantity) {
 
-        // ✅ 1. Check SKU uniqueness
+        //  1. Check SKU uniqueness
         if (productRepository.findBySku(sku).isPresent()) {
             throw new RuntimeException("SKU already exists");
         }
 
-        // ✅ 2. Create Product
+        // 2. Create Product
         Product product = new Product();
         product.setName(name);
         product.setSku(sku);
@@ -36,7 +36,7 @@ public class ProductService {
 
         productRepository.save(product);
 
-        // ✅ 3. Create Inventory (multi-warehouse support)
+        // 3. Create Inventory (multi-warehouse support)
         Inventory inventory = new Inventory();
         inventory.setProduct(product);
         inventory.setWarehouseId(warehouseId);
